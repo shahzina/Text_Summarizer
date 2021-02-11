@@ -50,9 +50,24 @@ def word_vectors(f):
 
 
 ### TEXT PROCESSING STEP:
+# we clean text to get rid of noise. 
+# clean_sentences = pd.Series(sentences).str.replace("[^a-zA-Z]", " ")
+# clean_sentences = [s.lower() for s in clean_sentences]
+nltk.download('stopwords')
+# stop_words = stopwords.words('english')
+
+
+
+
+
 if __name__ == "__main__":
-	sentence_list(df['article_text'])
+	sentences = sentence_list(df['article_text'])
 
 	f = open('word-vectors/glove.6B.100d.txt', encoding='utf-8')
-	word_vectors(f)
+	vectorized_words = word_vectors(f)
+
+	clean_sentences = pd.Series(sentences).str.replace("[^a-zA-Z]", " ")
+	clean_sentences = [s.lower() for s in clean_sentences]
+
+	stop_words = stopwords.words('english')
 
