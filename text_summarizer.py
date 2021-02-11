@@ -57,6 +57,19 @@ def word_vectors(f):
 #nltk.download('stopwords') #### UNCOMMENT when running for first time
 stop_words = nltk.corpus.stopwords.words('english') 
 
+def remove_stopwords(s):
+	'''
+	input:- sentences
+	for words in sentence, if word not in stop_words,
+	add word to the list.
+	return:- words not in stop_words. (stop_words are removed)
+	'''
+    new_s = " ".join([i for i in s if i not in stop_words])
+    return new_s
+
+### CREATE SENTENCE VECTORS
+
+
 
 
 
@@ -64,11 +77,15 @@ stop_words = nltk.corpus.stopwords.words('english')
 if __name__ == "__main__":
 	sentences = sentence_list(df['article_text'])
 
+	#define f
 	f = open('word-vectors/glove.6B.100d.txt', encoding='utf-8')
 	vectorized_words = word_vectors(f)
 
+	#convert to pandas series, replace given strings with space
 	clean_sentences = pd.Series(sentences).str.replace("[^a-zA-Z]", " ")
+	#convert all to lower case
 	clean_sentences = [s.lower() for s in clean_sentences]
+	#remove stopwords from clean sentences
+	clean_sentences = [remove_stopwords(r.split()) for r in clean_sentences]
 
-	# stop_words = stopwords.words('english')
 
