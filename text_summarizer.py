@@ -11,6 +11,7 @@ Goal is to generate a summary of a tennis match.
 import numpy as np 
 import pandas as pd 
 import nltk
+# from nltk.corpus import stopwords
 #nltk.download('punkt') #one time execution
 import re
 from nltk.tokenize import sent_tokenize
@@ -53,8 +54,8 @@ def word_vectors(f):
 # we clean text to get rid of noise. 
 # clean_sentences = pd.Series(sentences).str.replace("[^a-zA-Z]", " ")
 # clean_sentences = [s.lower() for s in clean_sentences]
-nltk.download('stopwords')
-# stop_words = stopwords.words('english')
+#nltk.download('stopwords') #### UNCOMMENT when running for first time
+stop_words = nltk.corpus.stopwords.words('english') 
 
 
 
@@ -69,5 +70,5 @@ if __name__ == "__main__":
 	clean_sentences = pd.Series(sentences).str.replace("[^a-zA-Z]", " ")
 	clean_sentences = [s.lower() for s in clean_sentences]
 
-	stop_words = stopwords.words('english')
+	# stop_words = stopwords.words('english')
 
