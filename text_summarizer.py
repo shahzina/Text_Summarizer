@@ -33,15 +33,26 @@ def sentence_list(df_column):
 
 #print(sentence_list(df['article_text']))
 
-word_embeddings = {}
-f = open('glove.6B.100d.txt', encoding='utf-8')
+def word_vectors(f):
+	word_embeddings = {}
+	# f = open('word-vectors/glove.6B.100d.txt', encoding='utf-8')
 
-for line in f:
-	values = line.split()
-	word = values[0]
-	coefs = np.asarray(values[1:], dtype = 'float32')
-	word_embeddings[word] = coefs
-f.close()
+	for line in f:
+		values = line.split()
+		word = values[0]
+		coefs = np.asarray(values[1:], dtype = 'float32')
+		word_embeddings[word] = coefs
+	f.close()
 
-print(len(word_embeddings))
+	return word_embeddings
+
+#print(len(word_embeddings)) ### ans: 400000
+
+
+### TEXT PROCESSING STEP:
+if __name__ == "__main__":
+	sentence_list(df['article_text'])
+
+	f = open('word-vectors/glove.6B.100d.txt', encoding='utf-8')
+	word_vectors(f)
 
