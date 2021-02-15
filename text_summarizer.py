@@ -15,6 +15,8 @@ import nltk
 #nltk.download('punkt') #one time execution
 import re
 from nltk.tokenize import sent_tokenize
+from sklearn.metrics.pairwise import cosine_similarity
+import networkx as nx
 
 df = pd.read_csv("tennis_articles.csv", encoding = 'windows-1252')
 
@@ -68,9 +70,39 @@ def remove_stopwords(s):
     return new_s
 
 ### CREATE SENTENCE VECTORS
+def vectorize_sentences(clean_sentences):
+	sentence_vectors = []
+
+	for i in clean_sentences:
+		if len(i) !=0:
+			v = sum([word_embeddings.get(w, np.zeroes((100, ))) for w in i.split()])/(len(i.split()) + 0.001)
+
+		else:
+			v = np.zeroes((100, ))
+
+		sentence_vectors.append(v)
+
+	return sentence_vectors
+
+### Similarity Matrix
+sim_mat = np.zeros([len(sentences), len(sentences)])
 
 
+for i in range(len(sentences)):
+  for j in range(len(sentences)):
+    if i != j:
+      sim_mat[i][j] = cosine_similarity(sentence_vectors[i].reshape(1,100), sentence_vectors[j].reshape(1,100))[0,0]
 
+
+nx_graph = nx.from_numpy_array(sim_mat)
+scores = nx.pagerank(nx_graph)
+
+ranked_sentences = sorted(((scores[i],s) for i,s in enumerate(sentences)), reverse=True)
+
+# Extract top 10 sentences as the summary
+for i in range(10):
+  print(ranked_sentences[i][1])
+  
 
 
 
