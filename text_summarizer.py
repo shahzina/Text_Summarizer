@@ -149,7 +149,7 @@ if __name__ == "__main__":
 """
 OUTPUT
 
-“I was on a nice trajectorythen,” Reid recalled.“If I hadn’t got sick, I think I could have started pushing towards the second week at the slams and then who knows.” Duringa comeback attempt some five years later, Reid added Bernard Tomic and 2018 US Open Federer slayer John Millman to his list of career scalps.
+“I was on a nice trajectory then,” Reid recalled.“If I hadn’t got sick, I think I could have started pushing towards the second week at the slams and then who knows.” During a comeback attempt some five years later, Reid added Bernard Tomic and 2018 US Open Federer slayer John Millman to his list of career scalps.
 Major players feel that a big event in late November combined with one in January before the Australian Open will mean too much tennis and too little rest.
 So I'm not the one to strike up a conversation about the weather and know that in the next few minutes I have to go and try to win a tennis match.
 Speaking at the Swiss Indoors tournament where he will play in Sunday’s final against Romanian qualifier Marius Copil, the world number three said that given the impossibly short time frame to make a decision, he opted out of any commitment.
